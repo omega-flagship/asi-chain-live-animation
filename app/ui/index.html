@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e18">
+  <title>Shard Observatory · OmegaHive</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="top-inner">
+      <div class="brand"><span class="brand-icon" data-icon="hive"></span>OmegaHive</div>
+      <div class="connection"><span id="status" role="status">Connecting</span><span class="clock"><span data-icon="clock"></span><time id="utc">--:--:--</time> UTC</span></div>
+    </div>
+  </header>
+  <main>
+    <header class="overview">
+      <div><h1>Shard observatory</h1><div class="identity"><span class="chip"><i></i>Local shard</span><span>f1r3node-rust</span><b>/</b><span id="network">—</span><b>/</b><span id="shard">—</span></div></div>
+      <dl class="vitals"><div><dt>Block height</dt><dd id="tip">—</dd></div><div><dt>Finalized</dt><dd id="finalized">—</dd></div><div><dt>Nodes</dt><dd id="node-count">—</dd></div></dl>
+    </header>
+    <p id="notice" role="status" hidden></p>
+    <div class="workspace">
+      <section class="panel orbit-panel" id="orbital" aria-labelledby="orbit-title">
+        <header class="panel-head"><h2 id="orbit-title"><span data-icon="orbit"></span>Orbital map</h2>
+          <div class="map-actions"><button id="pause" class="control"><span data-icon="pause"></span><span>Pause</span></button><button id="expand" class="icon-btn" aria-label="Expand map" title="Expand map"><span data-icon="expand"></span></button></div>
+        </header>
+        <div class="space" id="space">
+          <canvas id="sky" aria-label="Orbiting shard nodes, peer block transfers and inbound external deploys. Node and event details are also listed below."></canvas>
+          <div class="map-tools"><button id="labels" class="overlay" aria-pressed="true"><span data-icon="tag"></span>Labels</button>
+            <div class="zoom overlay"><button id="zoom-out" aria-label="Zoom out" title="Zoom out">−</button><button id="zoom-level" aria-label="Reset zoom" title="Reset zoom">100%</button><button id="zoom-in" aria-label="Zoom in" title="Zoom in">+</button></div>
+          </div>
+        </div>
+      </section>
+      <aside>
+        <section class="panel" aria-labelledby="channels-title">
+          <header class="panel-head"><h2 id="channels-title"><span data-icon="signals"></span>Comet legend</h2><span class="unit" title="Observed events in the last 60 seconds">Last 60 s</span></header>
+          <div id="channels" class="channels"></div>
+          <div class="queue-total">
+            <div>Deploys accepted by queues<small>Since each queue started</small></div>
+            <strong id="queue-accepted">—</strong>
+          </div>
+        </section>
+        <section class="panel directory" aria-labelledby="directory-title">
+          <header class="panel-head"><h2 id="directory-title"><span data-icon="nodes"></span>Node directory</h2><button id="clear-node" class="plain" hidden>Clear</button></header>
+          <div id="nodes" class="node-list"><p class="empty">Waiting for the observer…</p></div>
+        </section>
+      </aside>
+    </div>
+    <section class="panel feed" aria-labelledby="feed-title">
+      <header class="panel-head"><h2 id="feed-title"><span data-icon="pulse"></span>Event stream</h2><button id="more" class="plain" hidden>Show more</button></header>
+      <div class="table-wrap"><table><thead><tr><th scope="col">Time <small>UTC</small></th><th scope="col">Signal</th><th scope="col">Route</th><th scope="col">Block / deploy</th></tr></thead><tbody id="events"></tbody></table></div>
+      <p class="empty" id="quiet">Waiting for shard events…</p>
+    </section>
+  </main>
+  <script type="module" src="./orbit.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

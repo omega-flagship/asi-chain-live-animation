@@ -1,0 +1,10 @@
+{
+  "id": "shard-observatory",
+  "name": "Shard Observatory",
+  "version": "1.2.0",
+  "contract": "0.1",
+  "module": "program.py",
+  "description": "Watch peer block transfers, receiver verdicts and incoming deploys on the local F1R3node shard.",
+  "icon": "orbit",
+  "capabilities": []
+}
